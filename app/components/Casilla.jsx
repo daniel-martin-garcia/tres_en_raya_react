@@ -20,7 +20,7 @@ export default class Casilla extends React.Component {
 
 	render() {
 		return(
-			<button style={casillaStyle} onClick={this.casillaClick} className={this.props.valor === "-" ? "clickable" : "no clickable"}>{this.props.valor}</button>
+			<button style={casillaStyle} onClick={this.casillaClick} className={this.props.valor === "-" ? "clickable" : "no_clickable"}>{this.props.valor}</button>
 		);
 	}
 }
