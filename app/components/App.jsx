@@ -16,6 +16,7 @@ export default class App extends React.Component {
 				['-','-','-'],
 				['-','-','-'],
 			],
+			movimientos: 0
 		};
 		this.appClick = this.appClick.bind(this);
 	}
@@ -27,6 +28,7 @@ export default class App extends React.Component {
 		this.setState({
 			turno: this.state.turno === JUGADORX ? JUGADOR0 : JUGADORX,
 			valores: this.state.valores,
+			movimientos: this.state.movimientos + 1
 		});
 	}
 
@@ -36,6 +38,7 @@ export default class App extends React.Component {
 		  <div>
 		  	<Cabecera texto={texto}/>
 		  	<Tablero valores={this.state.valores} appClick={this.appClick}/>
+		  	<h3> Numero de movimientos: {this.state.movimientos}</h3>
 		  </div>
 		);
   }
