@@ -48,7 +48,7 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		let texto = "Turno de " + this.state.turno;
+		let texto = this.state.turno;
 		return (
 		  <div>
 		  	<Cabecera texto={texto}/>
