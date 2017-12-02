@@ -4,7 +4,7 @@ import Cabecera from './Cabecera.jsx';
 import Tablero from './Tablero.jsx';
 
 const JUGADORX = "Las X"
-const JUGADORY = "Los 0"
+const JUGADOR0 = "Los 0"
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -17,6 +17,17 @@ export default class App extends React.Component {
 				['-','-','-'],
 			],
 		};
+		this.appClick = this.appClick.bind(this);
+	}
+
+	appClick(numeroFila, numeroColumna) {
+		let nuevosValores = this.state.valores.slice();
+		let nuevoValor = this.state.turno === JUGADORX ? 'X': '0';
+		nuevosValores[numeroFila][numeroColumna] = nuevoValor;
+		this.setState({
+			turno: this.state.turno === JUGADORX ? JUGADOR0 : JUGADORX,
+			valores: this.state.valores,
+		});
 	}
 
 	render() {
@@ -24,7 +35,7 @@ export default class App extends React.Component {
 		return (
 		  <div>
 		  	<Cabecera texto={texto}/>
-		  	<Tablero valores={this.state.valores}/>
+		  	<Tablero valores={this.state.valores} appClick={this.appClick}/>
 		  </div>
 		);
   }

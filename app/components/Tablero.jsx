@@ -7,12 +7,21 @@ const casillaStyle = {
 };
 
 export default class Tablero extends React.Component {
+	constructor(props) {
+		super(props)
+		this.tableroClick = this.tableroClick.bind(this);
+	}
+
+	tableroClick(numeroFila, numeroColumna) {
+		this.props.appClick(numeroFila, numeroColumna);
+	}
+
 	render() {
 		let tablero = this.props.valores.map((valoresFila, indiceFila) => {
 			let fila = valoresFila.map((valor, indiceColumna) => {
 				let myKey = "" + indiceFila + indiceColumna;
 				return(
-					<Casilla valor={valor} key={myKey}/>
+					<Casilla valor={valor} key={myKey} indiceFila={indiceFila} indiceColumna={indiceColumna} tableroClick={this.tableroClick}/>
 				);
 			});
 			return (
